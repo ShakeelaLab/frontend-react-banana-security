@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Profile from './pages/Profile';
+import Profile from "./pages/Profile";
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -9,7 +9,7 @@ import './App.css';
 import {AuthContext} from "./context/AuthContext";
 
 function App() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuth } = useContext(AuthContext);
 
     return (
         <>
@@ -18,7 +18,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/profile"
-                           element={isAuthenticated ? <Profile/> :
+                           element={isAuth ? <Profile/> :
                                <Navigate to="/"/>}/>
                     <Route path="/signin"
                            element={<SignIn/>}/>
